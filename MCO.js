@@ -148,6 +148,7 @@ function deleteAccount(name){
 
 }
 
+//Handles the event of clicking Create and Login from the Titlepage
 $(document).ready(function(){
     $("#button-create-account").click(function(){
         $("#account-creation-container").removeClass("d-none").fadeIn();
