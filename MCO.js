@@ -148,6 +148,24 @@ function deleteAccount(name){
 
 }
 
+$(document).ready(function(){
+    $("#button-create-account").click(function(){
+        $("#account-creation-container").removeClass("d-none").fadeIn();
+        $("#account-login-container").addClass("d-none").fadeOut();
+    });
+
+    $("#button-login-account").click(function(){
+        $("#account-login-container").removeClass("d-none").fadeIn();
+        $("#account-creation-container").addClass("d-none").fadeOut();
+    });
+
+    $("#account-creation-container form").submit(function (event) {
+        event.preventDefault(); // Stops the default form submission
+        $("#account-creation-container").show();
+    });
+
+});
+
 
 
 
