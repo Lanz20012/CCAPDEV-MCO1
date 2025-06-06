@@ -11,38 +11,53 @@
     <!--titlecard before entering the webpage-->
     <form>
         <h1 class="titlecard text-center bg-success">Welcome to Lab Reservation.com</h1><br>
-        <!--Creating an Account-->
-        <button class = "btn btn-primary" onclick="window.location.href='register.html'">Create an Account</button> <br>
-        <!--login into Account-->
-        <button class = "btn btn-secondary" onclick="window.location.href='login.html'">Login to Existing Account</button>
+        <div class="container text-center">
+            <!--Creating an Account-->
+            <button class = "btn btn-primary" onclick="window.location.href='register.html'">Create an Account</button> <br>
+            <!--login into Account-->
+            <button class = "btn btn-info" onclick="window.location.href='login.html'">Login to Existing Account</button>
+        </div>
     </form>
+
+    <div class = "account-creation-container d-none">
+        <!--Creating an Account-->
+        <form class="account-creation">
+            <label for="fname">First name:</label><br>
+            <input type="text" id="fname" name="fname"><br>
+            <label for="lname">Last name:</label><br>
+            <input type="text" id="lname" name="lname"><br>
+            <label for="password">Password</label><br>
+            <input type="password" id="password" name="password"><br>
+            <button type="submit">Create Account</button>
+        </form>
+    </div>
+
+    <div class = "account-login-container d-none">
+        <!--login into Account-->
+        <form class="account-info">
+            <label for="fname">First name:</label><br>
+            <input type="text" id="fname" name="fname"><br>
+            <label for="lname">Last name:</label><br>
+            <input type="text" id="lname" name="lname"><br>
+            <label for="password">Password</label><br>
+            <input type="password" id="password" name="password"><br>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
 </body>
 </html>
 
 
 
 <html>
-     <!--Creating an Account-->
-     <form class="account-info">
-        <label for="fname">First name:</label><br>
-        <input type="text" id="fname" name="fname"><br>
-        <label for="lname">Last name:</label><br>
-        <input type="text" id="lname" name="lname"><br>
-        <label for="password">Password</label><br>
-        <input type="password" id="password" name="password"><br>
-        <button type="submit">Create Account</button>
-     </form>
+     
 
-    <!--login into Account-->
-    <form class="account-info">
-        <label for="fname">First name:</label><br>
-        <input type="text" id="fname" name="fname"><br>
-        <label for="lname">Last name:</label><br>
-        <input type="text" id="lname" name="lname"><br>
-        <label for="password">Password</label><br>
-        <input type="password" id="password" name="password"><br>
-        <button type="submit">Submit</button>
-    </form>
+    
+
+
+
+
+
 
     <!--Circle Profile in the right corner-->
     <div id="profile-circle">
