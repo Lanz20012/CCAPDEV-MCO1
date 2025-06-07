@@ -137,7 +137,10 @@ let globalReservations = []
 //Keep track of the student that most recently logged in
 let loginStudent = null;
 
-//Title Page Code
+//Keeping track of the remembered user
+let rememberedUser = null;
+
+//-------------------Title Page Code -----------------------
 //Handles the buttons in the titlepage giving access to the creating and login forms
 $(document).ready(function(){
     $("#button-create-account").click(function(){
@@ -204,6 +207,15 @@ $(document).ready(function(){
             student.firstname === fname && student.lastname === lname && student.password === password
         );
 
+        //if the user is remembered, auto-fill everything
+        let rememberedUser = JSON.parse(localStorage.getItem("rememberedUser"));
+        if (rememberedUser) {
+            $("#fname").val(rememberedUser.firstname);
+            $("#lname").val(rememberedUser.lastname);
+            $("#password").val(rememberedUser.password);
+            $("#remember-signin").prop("checked", true); // Keep checkbox checked
+        }
+
         if(student){
             loginStudent = student
             window.location.href = "dashboard.html"
@@ -213,7 +225,7 @@ $(document).ready(function(){
     })
 })
 
-
+//-------------------Profile Settings Code -----------------------
 //TODO: ADD EDIT PROFILE
 //TODO: ADD CHANGE PASSWORD
 
@@ -239,8 +251,24 @@ $(document).ready(function () {
 });
 
 //Logout Account Button
-//TODO: On logout screen ask the user if they want to be remembered
+$(document).ready(function(){
+    $("#logout-button").click(function(){
+        let rememberMe = $("#remember-signin").prop("checked")
+        if(rememberMe){
+            localStorage.setItem("rememberedUser", JSON.stringify(loginStudent))
+        }else{
+            localStorage.removeItem("rememberedUser")
+        }
 
+        let confirmLogout = confirm("Are you sure you want to log out?")
+        if(confirmLogout){
+            loginStudent = null
+            window.location.href = "titlepage.html"
+        }
+    })
+})
+
+//-------------------Sidebar Features Code -----------------------
 //People List Code
 $(document).ready(function () {
     students.forEach(student => {
