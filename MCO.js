@@ -170,40 +170,58 @@ $(document).ready(function(){
 //Creation Form Validation
 $(document).ready(function(){
     $("#account-creation-info").submit(function(event){
+        event.preventDefault();
+        let isValid = true
         let fname = $("#fname").val()
         let lname = $("#lname").val()
         let password = $("#password").val()
         let namePattern = /^[A-Za-z\s]+$/
 
-        if(namePattern.test(fname)){
-            //alert mentioning only letters are available
+        if(!namePattern.test(fname)){
+            isValid = false
+            //message mentioning only letters are available
+            $("#error-msg").text("First Name should only consist of letters").removeClass("d-none").fadeIn();
         }
 
-        if(namePattern.test(lname)){
-            //alert mentioning only letters are available
+        if(!namePattern.test(lname)){
+            isValid = false
+            //message mentioning only letters are available
+            $("#error-msg").text("Last Name should only consist of letters").removeClass("d-none").fadeIn();
         }
 
-        if(password.length()<8){
+        if(!password.length()<8){
+            isValid = false
             //message to make password longer
+            $("#error-msg").text("Password should be longer").removeClass("d-none").fadeIn();
         }
 
-        //creation of a new student then added to the student list
-        students = new Student(fname, lname, password)
+        if(isValid){
+            //creation of a new student then added to the student list
+            students = new Student(fname, lname, password)
+            window.location.href = "dashboard.html"
+        }
     })
 })
+
 
 //Login Form Validation
 $(document).ready(function(){
     $("#account-login-info").submit(function(event){
+        event.preventDefault();
         let fname = $("#fname").val()
         let lname = $("#lname").val()
         let password = $("#password").val()
+        let student = students.find(student => 
+            student.firstname === fname && student.lastname === lname && student.password === password
+        );
 
-        
-
+        if(student){
+            window.location.href = "dashboard.html"
+        } else {
+            $("#error-msg").text("Incorrect information, try again.").removeClass("d-none").fadeIn();
+        }
     })
 })
-
 
 
 
