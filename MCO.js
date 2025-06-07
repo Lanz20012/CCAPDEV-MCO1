@@ -1,9 +1,10 @@
 class Student{
     //creating an account
-    constructor(firstname, lastname, id, password){
+    constructor(firstname, lastname, id, password, profilePicture = "default.jpg"){
         this.firstname = firstname
         this.lastname = lastname
         this.password = password
+        this.profilePicture = profilePicture
         this.reservations = []
     }
 
@@ -203,7 +204,6 @@ $(document).ready(function(){
     })
 })
 
-
 //Login Form Validation
 $(document).ready(function(){
     $("#account-login-info").submit(function(event){
@@ -222,6 +222,20 @@ $(document).ready(function(){
         }
     })
 })
+
+//People List Code
+$(document).ready(function () {
+    students.forEach(student => {
+        let studentItem = $("<li>").addClass("list-group-item d-flex align-items-center my-4 bg-info text-white")
+            .html(`
+                <img src="${student.profilePicture}" class="rounded-circle me-3" width="40">
+                <span>${student.firstname} ${student.lastname}</span>
+                <span class="badge bg-success ms-auto">Active</span>
+            `);
+        $("#people-list").append(studentItem);
+    });
+});
+
 
 
 
