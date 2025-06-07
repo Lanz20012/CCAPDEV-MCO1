@@ -1,8 +1,8 @@
 class Student{
     //creating an account
-    constructor(name, id, password){
-        this.name = name
-        this.id = id
+    constructor(firstname, lastname, id, password){
+        this.firstname = firstname
+        this.lastname = lastname
         this.password = password
         this.reservations = []
     }
@@ -25,7 +25,7 @@ class Student{
     }
 
     checkAccountDetails(){
-        return this.name, this.id
+        return this.firstname, this.lastname
     }
 
     seeReservations(){
@@ -124,11 +124,11 @@ generateDays().forEach(date => {
 
 //sample student users
 const students = [
-    new Student ("Alice","001","123"),
-    new Student ("Bob","002","124"),
-    new Student ("Megan","003","125"),
-    new Student ("Alex","004","126"),
-    new Student ("Hayley","005","127")
+    new Student ("Alice","O'Hera","12345678"),
+    new Student ("Bob","Co","124idiwhcewbcob"),
+    new Student ("Megan","Tan","125eohdwodjo"),
+    new Student ("Alex","Smith","126echodoor"),
+    new Student ("Hayley","Jacobs","123")
 ]
 //how the reservations for all of the students
 const globalReservations = []
@@ -148,7 +148,8 @@ function deleteAccount(name){
 
 }
 
-//Handles the event of clicking Create and Login from the Titlepage
+
+//Handles the buttons in the titlepage giving access to the creating and login forms
 $(document).ready(function(){
     $("#button-create-account").click(function(){
         $("#account-creation-container").removeClass("d-none").fadeIn();
@@ -164,8 +165,44 @@ $(document).ready(function(){
         event.preventDefault(); // Stops the default form submission
         $("#account-creation-container").show();
     });
-
 });
+
+//Creation Form Validation
+$(document).ready(function(){
+    $("#account-creation-info").submit(function(event){
+        let fname = $("#fname").val()
+        let lname = $("#lname").val()
+        let password = $("#password").val()
+        let namePattern = /^[A-Za-z\s]+$/
+
+        if(namePattern.test(fname)){
+            //alert mentioning only letters are available
+        }
+
+        if(namePattern.test(lname)){
+            //alert mentioning only letters are available
+        }
+
+        if(password.length()<8){
+            //message to make password longer
+        }
+
+        //creation of a new student then added to the student list
+        students = new Student(fname, lname, password)
+    })
+})
+
+//Login Form Validation
+$(document).ready(function(){
+    $("#account-login-info").submit(function(event){
+        let fname = $("#fname").val()
+        let lname = $("#lname").val()
+        let password = $("#password").val()
+
+        
+
+    })
+})
 
 
 
