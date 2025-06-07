@@ -11,6 +11,7 @@
     <script src="MCO.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
+    <!--User Profile and Settings-->
     <div class="position-fixed top-0 end-0 m-3 margin-right">
         <button class = "btn btn-light rounded-circle p-0 border" id = "profile-button" data-bs-toggle="dropdown" aria-controls="false"> 
             <img src="student-profile.jpg" alt="Student Account" class="rounded-circle" width="50" height="50">
@@ -20,18 +21,9 @@
             <li><a class="dropdown-item" href="#">Edit Profile</a></li>
             <li><a class="dropdown-item" href="#">Change Password</a></li>
             <li><button class ="btn btn-danger" id ="delete-account-button">Delete Account</button></li>
-            <li><button class = "btn btn-secondary" id="logout-button">Logout</button></li>
-        </ul>
-    </div>
-
-    <div class="position-fixed start-0 top-0 vh-100 p-3 w-25 bg-light p-3" id="sidebar">
-        <h2 class="text-center bg-success p-3">Lab Reservations.com</h2>
-        <ul class="list-unstyled">
-            <li><a class="btn btn-success w-100 my-4" href="#">People</a></li>
-            <li><a class="btn btn-success w-100 my-4" href="#">Reserve Lab Timeslot</a></li>
-            <li><a class="btn btn-success w-100 my-4" href="#">See All Reservations</a></li>
-            <li><a class="btn btn-success w-100 my-4" href="#">Edit Reservations</a></li>
-            <li><a class="btn btn-success w-100 my-4" href="#">Log Out</a></li>
+            <li><button class = "btn btn-secondary" id="logout-button">Log Out</button></li>
+            <input class="form-check-input" type="checkbox" id="remember-signin" name="remember-signin">
+            <label class="form-check-label" for="remember-signin">Remember Me</label>
         </ul>
     </div>
 
@@ -57,6 +49,19 @@
         </div>
     </div>
 
+    <!--Sidebar Elements-->
+    <div class="position-fixed start-0 top-0 vh-100 p-3 w-25 bg-light p-3" id="sidebar">
+        <h2 class="text-center bg-success p-3">Lab Reservations.com</h2>
+        <ul class="list-unstyled">
+            <li><a class="btn btn-success w-100 my-4" href="#">People</a></li>
+            <li><a class="btn btn-success w-100 my-4" href="#">Reserve Lab Timeslot</a></li>
+            <li><a class="btn btn-success w-100 my-4" href="#">See All Reservations</a></li>
+            <li><a class="btn btn-success w-100 my-4" href="#">Edit Reservations</a></li>
+             <li><a class="btn btn-secondary w-100 my-4" href="titlepage.html">Return to Title Page</a></li>
+        </ul>
+    </div>
+
+    <!--Calendar Element for the Month of June-->
     <div class="container d-flex justify-content-center align-items-center vh-100" >
         <div class="card p-3" style="width:550px; height:550px">
             <h3 class="text-center">JUNE</h3>
