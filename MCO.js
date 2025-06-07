@@ -123,33 +123,21 @@ generateDays().forEach(date => {
 });
 
 
-//sample student users
-const students = [
+//Sample student users
+let students = [
     new Student ("Alice","O'Hera","12345678"),
     new Student ("Bob","Co","124idiwhcewbcob"),
     new Student ("Megan","Tan","125eohdwodjo"),
     new Student ("Alex","Smith","126echodoor"),
-    new Student ("Hayley","Jacobs","123")
+    new Student ("Hayley","Jacobs","123") //test user for login
 ]
 //how the reservations for all of the students
-const globalReservations = []
+let globalReservations = []
 
-//when search a student, display the student's name after search
-function displayStudent(name){
-    students.forEach(student=>{
-        if(student.name == name){
-            return name
-        }
-    })
-    return "Student Not Found"
-}
+//Keep track of the student that most recently logged in
+let loginStudent = null;
 
-//when a student wants to delete their account
-function deleteAccount(name){
-
-}
-
-
+//Title Page Code
 //Handles the buttons in the titlepage giving access to the creating and login forms
 $(document).ready(function(){
     $("#button-create-account").click(function(){
@@ -204,6 +192,7 @@ $(document).ready(function(){
     })
 })
 
+
 //Login Form Validation
 $(document).ready(function(){
     $("#account-login-info").submit(function(event){
@@ -216,12 +205,47 @@ $(document).ready(function(){
         );
 
         if(student){
+            loginStudent = student
             window.location.href = "dashboard.html"
         } else {
             $("#error-msg").text("Incorrect information, try again.").removeClass("d-none").fadeIn();
         }
     })
 })
+
+
+//TODO: ADD EDIT PROFILE
+//TODO: ADD CHANGE PASSWORD
+
+//Delete Account Button
+$(document).ready(function(){
+    $("#delete-account-button").click(function(){
+        $("#confirm-delete-modal").removeClass("d-none"); // Show confirmation modal
+    });
+
+    $("#confirm-delete").click(function () {
+        let enteredPassword = $("#confirm-password").val();
+
+        // Verify password before deleting
+        if (enteredPassword === loggedInStudent.password) {
+            students = students.filter(student => student !== loggedInStudent);
+            loggedInStudent = null; // Clear login status
+            $("#confirm-delete-modal").addClass("d-none"); // Hide modal
+            displayStudents();
+            alert("Your account has been deleted!");
+            window.location.href = "titlepage.html"
+        } else {
+            alert("Incorrect password! Account deletion canceled.");
+        }
+    });
+
+    $("#cancel-delete").click(function () {
+        $("#confirm-delete-modal").addClass("d-none"); // Hide confirmation modal
+    });
+})
+
+//Logout Account Button
+//TODO: On logout screen ask the user if they want to be remembered
 
 //People List Code
 $(document).ready(function () {
@@ -230,14 +254,19 @@ $(document).ready(function () {
             .html(`
                 <img src="${student.profilePicture}" class="rounded-circle me-3" width="40">
                 <span>${student.firstname} ${student.lastname}</span>
-                <span class="badge bg-success ms-auto">Active</span>
             `);
-        $("#people-list").append(studentItem);
+        $("#people-list").append(studentItem)
     });
 });
 
+//People List Search Bar
+$(document).ready(function () {
+    $("#search-bar").on("keyup", function () {
+        let searchValue = $(this).val().toLowerCase();
 
-
-
-
-
+        $("#people-list li").each(function () {
+            let studentName = $(this).find("span").text().toLowerCase(); // Extracts only the name inside <span>
+            $(this).toggle(studentName.includes(searchValue)); // Shows/hides items dynamically
+        });
+    });
+});
