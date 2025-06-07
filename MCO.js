@@ -193,7 +193,7 @@ $(document).ready(function(){
 })
 
 
-//Login Form Validation
+//Login Form Validation (NOT FUNCTIONAL)
 $(document).ready(function(){
     $("#account-login-info").submit(function(event){
         event.preventDefault();
@@ -217,32 +217,26 @@ $(document).ready(function(){
 //TODO: ADD EDIT PROFILE
 //TODO: ADD CHANGE PASSWORD
 
-//Delete Account Button
-$(document).ready(function(){
-    $("#delete-account-button").click(function(){
-        $("#confirm-delete-modal").removeClass("d-none"); // Show confirmation modal
-    });
-
+//Delete Account Button (NOT FUNCTIONAL)
+$(document).ready(function () {
     $("#confirm-delete").click(function () {
         let enteredPassword = $("#confirm-password").val();
 
-        // Verify password before deleting
         if (enteredPassword === loggedInStudent.password) {
             students = students.filter(student => student !== loggedInStudent);
-            loggedInStudent = null; // Clear login status
-            $("#confirm-delete-modal").addClass("d-none"); // Hide modal
+            loggedInStudent = null; // Clears login state
             displayStudents();
-            alert("Your account has been deleted!");
+            alert("Your account has been deleted!");   
+            // Close modal after deletion
+            let modalInstance = bootstrap.Modal.getInstance(document.getElementById("confirmDeleteModal"));
+            modalInstance.hide();
+            //return to the titlepage after account gets deleted
             window.location.href = "titlepage.html"
         } else {
             alert("Incorrect password! Account deletion canceled.");
         }
     });
-
-    $("#cancel-delete").click(function () {
-        $("#confirm-delete-modal").addClass("d-none"); // Hide confirmation modal
-    });
-})
+});
 
 //Logout Account Button
 //TODO: On logout screen ask the user if they want to be remembered
