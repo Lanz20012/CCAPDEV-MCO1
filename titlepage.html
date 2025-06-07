@@ -22,33 +22,33 @@
         </div>
     </div>
 
-    <!-- Using d-none the submission form for Creating and Login into Account for hidden until one of the options are chosen-->
     <div id="account-creation-container" class = "d-none">
         <!--Creating an Account-->
-        <form class="account-creation">
+        <form id="account-creation-info">
             <h2 class = "account-titlecard">Create An Account</h2>
             <label for="fname">First name:</label><br>
-            <input type="text" id="fname" name="fname" placeholder="Enter your first name" autocomplete="off"><br>
+            <input type="text" id="fname" name="fname" placeholder="Enter your first name" autocomplete="off" required><br>
             <label for="lname">Last name:</label><br>
-            <input type="text" id="lname" name="lname" placeholder="Enter your last name" autocomplete="off"><br>
+            <input type="text" id="lname" name="lname" placeholder="Enter your last name" autocomplete="off" required><br>
             <label for="password">Password</label><br>
-            <input type="password" id="password" name="password"><br>
+            <input type="password" id="password" name="password" placeholder="Enter your password minimum length is 8" minlength="8" required><br>
             <button type="submit" class="btn btn-success" id="button-account-creation">Create Account</button>
         </form>
     </div>
 
     <div id="account-login-container" class = "d-none">
         <!--login into Account-->
-        <form class="account-info">
+        <form id="account-login-info">
             <h2 class = "account-titlecard">Login To Account</h2>
             <label for="fname">First name:</label><br>
-            <input type="text" id="fname" name="fname"><br>
+            <input type="text" id="fname" name="fname" placeholder="Enter your first name" required><br>
             <label for="lname">Last name:</label><br>
-            <input type="text" id="lname" name="lname"><br>
+            <input type="text" id="lname" name="lname" placeholder="Enter your last name" required><br>
             <label for="password">Password</label><br>
-            <input type="password" id="password" name="password"><br>
+            <input type="password" id="password" name="password" required><br>
             <button type="submit" class="btn btn-success" id="button-account-login">Submit</button>
         </form>
     </div>
 </body>
 </html>
+
