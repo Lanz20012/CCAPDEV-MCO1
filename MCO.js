@@ -189,7 +189,7 @@ $(document).ready(function(){
             $("#error-msg").text("Last Name should only consist of letters").removeClass("d-none").fadeIn();
         }
 
-        if(!password.length()<8){
+        if(password.length<8){
             isValid = false
             //message to make password longer
             $("#error-msg").text("Password should be longer").removeClass("d-none").fadeIn();
@@ -197,7 +197,7 @@ $(document).ready(function(){
 
         if(isValid){
             //creation of a new student then added to the student list
-            students = new Student(fname, lname, password)
+            students.push(new Student(fname, lname, password))
             window.location.href = "dashboard.html"
         }
     })
